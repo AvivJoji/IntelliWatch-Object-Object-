@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Transcript</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #000;
+      color: #ff0055;
+      padding: 20px;
+    }
+    #transcript {
+      border: 2px solid #ff0055;
+      padding: 15px;
+      background: #111;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>📢 Live Transcript</h1>
+  <div id="transcript">Waiting for transcript...</div>
+
+  <script>
+    const ws = new WebSocket(ws://${window.location.host}/ws);
+    const transcriptDiv = document.getElementById("transcript");
+
+    ws.onmessage = (event) => {
+      transcriptDiv.textContent += \n${event.data};
+    };
+  </script>
+</body>
+</html>
